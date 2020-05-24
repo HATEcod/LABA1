@@ -1,7 +1,7 @@
 public class Program {
     public static void main(String[] args) {
         NewArr newArr = new NewArr();
-        String st[] = new String[]{"thank", "god","iam", "not", "on", "the", "additional", "session"};
+        String st[] = new String[]{"thank", "god","i","am", "not", "on", "the", "additional", "session"};
         PrintArray(st); System.out.println(" ");
         PrintArray(newArr.NewArray(st));
 
