@@ -7,7 +7,7 @@ public class NumFuncTest {
     @Test
     public void characktersSum() {
         NumFunc numFunc = new NumFunc();
-        String st[] = new String[]{"calm", "world"};
+        String st[] = new String[]{"day", "world"};
         int actual = numFunc.CharacktersSum(st);
         int expected = 9;
         assertEquals(expected,actual);
@@ -23,9 +23,9 @@ public class NumFuncTest {
     @Test
     public void fillArrayWithLess(){
         NumFunc numFunc = new NumFunc();
-        String[] inS = new String[]{"HelloWorld", "my", "kate"};
+        String[] inS = new String[]{"wtf", "bmw", "hello"};
         String[] actual = numFunc.FillArrayWithLess(inS, 2, 5);
-        String[] expected = new String[]{"my", "kate"};
+        String[] expected = new String[]{"bmw", "hello"};
         assertArrayEquals(actual, expected);
 
     }

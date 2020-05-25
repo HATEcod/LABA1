@@ -7,9 +7,9 @@ public class NewArrTest {
     @Test
     public void newArray() {
         NewArr newarr = new NewArr();
-        String[] inS = new String[]{"HelloWorld", "my", "hell"};
+        String[] inS = new String[]{"wtf", "bmw", "hello"};
         String[] actual = newarr.NewArray(inS);
-        String[] expected = new String[]{"my", "hell"};
+        String[] expected = new String[]{"bmw", "hello"};
         assertArrayEquals(actual, expected);
     }
 }
