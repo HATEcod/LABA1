@@ -1,17 +1,42 @@
+import java.time.LocalDateTime;
+
 public class Program {
-    public static void main(String[] args) {
-        NewArr newArr = new NewArr();
-        String st[] = new String[]{"thank", "god","i","am", "not", "on", "the", "additional", "session"};
-        PrintArray(st); System.out.println(" ");
-        PrintArray(newArr.NewArray(st));
-
-    }
-
-    public static void PrintArray(String[] Arr)
+    public static void main(String[] args)
     {
-        for(int i = 0; i<Arr.length; i++)
-        {
-            System.out.print(" " + Arr[i]);
+        CardCatalog cardCatalog = new CardCatalog();
+        Turnstile turnstile = new Turnstile(cardCatalog);
+        PassCard cardNummber = new Card_OnNumerOfPasses(1, true, 1);
+        PassCard cardMoney = new Card_OnMoneyAmount(2,32);
+        PassCard cardDaysToday = new Card_OnTimeDuration(3, true, 24);
+        PassCard cardDaysPrev = new Card_OnTimeDuration(4, false, 6, LocalDateTime.parse("2020-02-01T12:45:30"));
+        cardCatalog.AddInCatalog(cardNummber);
+        cardCatalog.AddInCatalog(cardMoney);
+        cardCatalog.AddInCatalog(cardDaysToday);
+        cardCatalog.AddInCatalog(cardDaysPrev);
+        PassCard cardMoneyOutOfCatalog = new Card_OnMoneyAmount(5,17);
+
+        System.out.println(ANSI_BLACK +"Перший прохід" + ANSI_RESET);
+        for (PassCard card: cardCatalog.GetList()) {
+            turnstile.PassTheCard(card);
         }
+
+        turnstile.PassTheCard(cardMoneyOutOfCatalog);
+
+        System.out.println(ANSI_BLACK + "Другий прохід" + ANSI_RESET);
+        for (PassCard card: cardCatalog.GetList()) {
+            turnstile.PassTheCard(card);
+        }
+        turnstile.PassTheCard(cardMoneyOutOfCatalog);
+
+        cardCatalog.BanTheCard(1234);
+        cardCatalog.ShowCardInfo(1234);
+        cardCatalog.ShowAcceptsAndDeclines(1234);
+
+
     }
+
+
+    public static final String ANSI_RESET = "\u001B[0m";
+    public static final String ANSI_BLACK = "\u001B[30m";
+
 }
